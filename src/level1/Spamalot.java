@@ -16,8 +16,20 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Spamalot implements ActionListener {
-	static final String FAKE_USERNAME = "hellofriend@gmail.com";
-	static final String FAKE_PASSWORD = "iamafriend";
+	static final String FAKE_USERNAME = "your-best-friend-bob@gmail.com";
+	static final String FAKE_PASSWORD = "soupysoup";
+
+	String sendTextMessage(String phoneNumber, String message){
+		if(sendSpam(phoneNumber + "@tmomail.net", "", message)) return "T-Mobile"; 
+		if(sendSpam(phoneNumber + "@vmobl.com", "", message)) return "Virgin Mobile"; 
+		if(sendSpam(phoneNumber + "@cingularme.com", "", message)) return "Cingular"; 
+		if(sendSpam(phoneNumber + "@messaging.sprintpcs.com", "", message)) return "Sprint"; 
+		if(sendSpam(phoneNumber + "@vtext.com", "", message)) return "Verizon"; 
+		if(sendSpam(phoneNumber + "@messaging.nextel.com", "", message)) return "Nextel"; 
+		return "FAIL!";
+	}
+
+
 	private boolean sendSpam(String recipient, String subject, String content) {
 
 		Properties props = new Properties();
@@ -54,7 +66,7 @@ return false;
 	private void userinterface() {
 		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
-		JTextField text = new JTextField();
+		JTextField text = new JTextField(20);
 		bad.addActionListener(this);
 		good.addActionListener(this);
 		panel.add(text);
@@ -69,7 +81,7 @@ return false;
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource() == bad) {
-			sendSpam("elena.letourneau.22@bishops.com", "hi", "hello");
+			sendTextMessage("8587354810", "hello");
 		}
 		else if(e.getSource() == good) {
 			sendSpam("elena.letourneau.22@bishops.com", "hi", "hello");
