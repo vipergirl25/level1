@@ -16,16 +16,17 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Spamalot implements ActionListener {
-	static final String FAKE_USERNAME = "your-best-friend-bob@gmail.com";
-	static final String FAKE_PASSWORD = "soupysoup";
-
+	static final String FAKE_USERNAME = "spongebobpolygonpants@gmail.com";
+	static final String FAKE_PASSWORD = "iamspongebob";
+	JTextField text = new JTextField(20);
+	String hi;
 	String sendTextMessage(String phoneNumber, String message){
-		if(sendSpam(phoneNumber + "@tmomail.net", "", message)) return "T-Mobile"; 
-		if(sendSpam(phoneNumber + "@vmobl.com", "", message)) return "Virgin Mobile"; 
-		if(sendSpam(phoneNumber + "@cingularme.com", "", message)) return "Cingular"; 
-		if(sendSpam(phoneNumber + "@messaging.sprintpcs.com", "", message)) return "Sprint"; 
+		//if(sendSpam(phoneNumber + "@tmomail.net", "", message)) return "T-Mobile"; 
+		//if(sendSpam(phoneNumber + "@vmobl.com", "", message)) return "Virgin Mobile"; 
+		//if(sendSpam(phoneNumber + "@cingularme.com", "", message)) return "Cingular"; 
+		//if(sendSpam(phoneNumber + "@messaging.sprintpcs.com", "", message)) return "Sprint"; 
 		if(sendSpam(phoneNumber + "@vtext.com", "", message)) return "Verizon"; 
-		if(sendSpam(phoneNumber + "@messaging.nextel.com", "", message)) return "Nextel"; 
+		//if(sendSpam(phoneNumber + "@messaging.nextel.com", "", message)) return "Nextel"; 
 		return "FAIL!";
 	}
 
@@ -66,7 +67,7 @@ return false;
 	private void userinterface() {
 		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
-		JTextField text = new JTextField(20);
+		
 		bad.addActionListener(this);
 		good.addActionListener(this);
 		panel.add(text);
@@ -81,10 +82,13 @@ return false;
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource() == bad) {
-			sendTextMessage("8587354810", "hello");
+			hi = text.getText();
+			String sentTextMessage = sendTextMessage("8587351988", hi);
+			System.out.println(sentTextMessage);
 		}
 		else if(e.getSource() == good) {
-			sendSpam("elena.letourneau.22@bishops.com", "hi", "hello");
+			boolean sentEmailMessag = sendSpam("elena.letourneau.22@bishops.com", "hi", hi);
+			System.out.println(sentEmailMessag);
 		}
 	}
 	public static void main(String[] args) {
