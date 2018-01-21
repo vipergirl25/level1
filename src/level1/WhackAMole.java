@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class WhackAMole implements ActionListener {
-	int timesPressed = 0;
+	static int timesPressed = 0;
 	JFrame frame = new JFrame();
 	static Random rand = new Random();
 	Date timeAtStart = new Date();
